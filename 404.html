@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class="system">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Страница не найдена / Page Not Found</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="error-page glass">
+        <div class="error-content">
+            <svg width="120" height="120" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="2"/><path d="M30 70 L50 40 L70 70" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="40" cy="30" r="4" fill="currentColor"/><circle cx="60" cy="30" r="4" fill="currentColor"/></svg>
+            <h1 id="error-title">404</h1>
+            <p id="error-message">Упс! Эту страницу украли инопланетяне (или она просто пукнула и исчезла).</p>
+            <a href="./" class="btn">На главную</a>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const isEnglish = window.location.pathname.indexOf('/en/') === 0;
+            document.documentElement.lang = isEnglish ? 'en' : 'ru';
+            document.getElementById('error-title').textContent = '404';
+            document.getElementById('error-message').innerHTML = isEnglish
+                ? 'Oops! Aliens stole this page (or it just farted and vanished).'
+                : 'Упс! Эту страницу украли инопланетяне (или она просто пукнула и исчезла).';
+            document.querySelector('.btn').textContent = isEnglish ? 'Go Home' : 'На главную';
+            document.querySelector('.btn').href = isEnglish ? '../' : './';
+        })();
+    </script>
+</body>
+</html>
